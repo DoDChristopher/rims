@@ -1,0 +1,5 @@
+#!/bin/sh
+
+inkscape &
+
+exit 0

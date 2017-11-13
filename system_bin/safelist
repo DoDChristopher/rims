@@ -34,7 +34,7 @@ if [ -n "$RES" ]; then #If grep returns text on STDIN then a new device was loca
     ID=`ls /dev/disk/by-uuid/ | grep "$RES"` #Identify unauthorized USB ID's
     
     #zenity --warning --text="The following unauthorized USB device(s) have been detected:" #"$ID"
-    notify-send --app-name=Guardian --icon=error --category=Security \
+    notify-send -u critical --app-name=Guardian --icon=error --category=Security \
     "The following unauthorized USB device(s) have been detected:" "$ID"
     
     echo "ERROR: Guardian detected the following unauthorized USB device(s):" >> /home/usc/bin/guardian.log
