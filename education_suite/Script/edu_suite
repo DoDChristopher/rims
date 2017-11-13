@@ -1,0 +1,162 @@
+#!/bin/bash
+
+zero=0
+one=1
+divider_100=100
+play_prompt=$(</home/usc/bin/education_suite/config/play_prompt)
+play_speed=$(</home/usc/bin/education_suite/config/play_speed)
+record_name=$(</home/usc/bin/education_suite/config/record_name)
+fps_config=$(</home/usc/bin/education_suite/config/fps_config)
+
+play_case () {
+
+play_prompt=$(</home/usc/bin/education_suite/config/play_prompt)
+
+if [ $play_prompt = 0 ]
+then
+filename=$(</home/usc/bin/education_suite/output.txt)
+  vlc $filename
+
+fi
+
+if [ $play_prompt = 1 ]
+then
+  play_speed=$(zenity --list --title="Play Speed" --column="" --column=Speed --radiolist \
+  FALSE "25" \
+  FALSE "50" \
+  FALSE "75" \
+  FALSE "100" )
+  if [ $? = 1 ]
+    then
+     exit 0
+    fi
+
+
+  play_spd=$(echo "scale=2 ; $play_speed / $divider_100" | bc)
+  filename=$(</home/usc/bin/education_suite/output.txt)
+  vlc --rate=$play_spd $filename
+
+fi
+  
+}
+
+speed_selection () {
+
+zenity --question --text="Display speed selection before playback?"
+      choice2=$?
+
+      if [ $choice2 = 0 ] 
+      then
+      
+      echo "1" > /home/usc/bin/education_suite/config/play_prompt
+
+      fi
+    
+      if [ $choice2 = 1 ]
+      then
+
+      echo "0" > /home/usc/bin/education_suite/config/play_prompt
+
+      fi
+
+}
+
+options_menu () {
+str_1="Prompt Speed options on Record"
+choice3=$(zenity --list --title="Options" --column="#" --column="Operation" --radiolist \
+      FALSE "Prompt Speed options on Record" \
+      FALSE "Record Framerate" )
+      
+
+if [ "$choice3" = "Prompt Speed options on Record" ]
+  then
+    speed_selection
+  fi    
+
+if [ "$choice3" = "Record Framerate" ]
+then
+framerate_selection
+
+fi
+}
+
+framerate_selection() {
+choice4=$(zenity --entry --text="Enter Frames Per Second:")
+echo $choice4 > /home/usc/bin/education_suite/config/fps_config
+fps_config=$(</home/usc/bin/education_suite/config/fps_config)
+
+}
+
+
+while true; do
+
+CHOICE1=$(zenity --list \
+    --height=220 \
+    --width=230 \
+    --title="Education Suite" \
+    --text="Would you like to?" \
+    --radiolist \
+    --column="#" --column="Operation" \
+    FALSE "Play" \
+    FALSE "Record" \
+    FALSE "Options" \
+    FALSE "Exit")
+    if [ $? = 1 ]
+    then
+     exit 0
+    fi
+    
+  case $CHOICE1 in
+    "Play")
+    zenity --file-selection --filename=/media/usc/case_files_00103/ --title="Select a File"   > /home/usc/bin/education_suite/output.txt 
+    if [ $? = 1 ]
+    then
+     exit 0
+    fi
+   
+    play_case 
+    
+    ;;
+  
+    "Record")
+    record_name=$(zenity --entry --width=250 --title="Save" \
+    --text="Save File As:" )
+    
+    if [ $? = 0 ]
+    then
+    fps_config=$(</home/musc/bin/education_suite/config/fps_config)
+    echo $record_name > /home/usc/bin/education_suite/config/record_name
+    recordmydesktop -o /media/usc/case_files_00103/$record_name --fps $fps_config
+    
+    fi
+
+    ;;
+     
+    "Options") 
+
+    options_menu
+
+    
+
+    ;;
+
+
+
+    "Exit") 
+    
+    exit 0 
+    
+    ;;
+  
+  
+  esac
+
+done
+#zenity --forms --title="Education Suite" \
+#	--text="Enter information about your friend." \
+	
+
+
+
+
+

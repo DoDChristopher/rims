@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="48"
+   height="48"
+   id="svg6552"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   viewBox="0 0 48 48"
+   sodipodi:docname="play_tri_exp.svg">
+  <defs
+     id="defs6554">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient7118">
+      <stop
+         style="stop-color:#00a000;stop-opacity:1;"
+         offset="0"
+         id="stop7120" />
+      <stop
+         style="stop-color:#00a000;stop-opacity:0;"
+         offset="1"
+         id="stop7122" />
+    </linearGradient>
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient7118"
+       id="radialGradient7124"
+       cx="22.725481"
+       cy="23.467398"
+       fx="22.725481"
+       fy="23.467398"
+       r="17.877938"
+       gradientTransform="matrix(3.7344271,0.04836764,-0.01977954,3.0940488,-67.493938,-50.77782)"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="7"
+     inkscape:cx="12.785715"
+     inkscape:cy="36.023825"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     inkscape:grid-bbox="true"
+     inkscape:document-units="px"
+     inkscape:window-width="1295"
+     inkscape:window-height="744"
+     inkscape:window-x="65"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata6557">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     id="layer1"
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer">
+    <path
+       style="fill:url(#radialGradient7124);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.31600001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 8.2679747,1.223135 8.0863404,46.771006 45.199797,23.597439 Z"
+       id="path6560"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccc" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.92067719px;line-height:125%;font-family:'Courier 10 Pitch';-inkscape-font-specification:'Courier 10 Pitch, Normal';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="8.8416014"
+       y="28.274176"
+       id="text7126"
+       sodipodi:linespacing="125%"
+       transform="scale(1.0342975,0.96683981)"><tspan
+         sodipodi:role="line"
+         id="tspan7128"
+         x="8.8416014"
+         y="28.274176">PLAY</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:9.23359203px;line-height:125%;font-family:'Courier 10 Pitch';-inkscape-font-specification:'Courier 10 Pitch, Bold';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#00dce2;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="34.326183"
+       y="43.598019"
+       id="text4243"
+       sodipodi:linespacing="125%"
+       transform="scale(0.97937409,1.0210603)"><tspan
+         sodipodi:role="line"
+         id="tspan4245"
+         x="34.326183"
+         y="43.598019">F5</tspan></text>
+  </g>
+</svg>
