@@ -1,0 +1,14 @@
+#!/bin/bash
+#Program Name: alclear
+#
+#
+#This program ensures there is not a lock file in the /var/tmp/audacity<user-name> directory.
+#
+#
+
+
+# Remove lockfile.
+rm -f /var/tmp/audacity-usc/audacity-lock-root &
+rm -f /var/tmp/audacity-usc/audacity-lock-musc &
+
+exit 0

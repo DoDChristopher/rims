@@ -1,0 +1,30 @@
+#!/bin/bash
+#Program Name: Startup Script
+#
+#
+# Opens programs after initialization
+#
+#
+
+unity
+
+gconftool --set /apps/compiz-1/plugins/unityshell/screen0/options/devices_option  --type=int 0
+
+# Start Firefox.
+sleep 5 ; firefox
+
+# Start VLC dummy to stream h.264 input.
+hdmi &
+
+# Start Audacity.
+Audacity &
+
+# Start virtual machine.
+vmrun start /home/musc/vmware/CardioPerfect/CardioPerfect.vmx
+
+
+while ; do
+# Start usb whitelist.
+safelist 
+
+done
