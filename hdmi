@@ -1,0 +1,13 @@
+#!/bin/bash
+#Program Name: hdmi
+#
+#
+# This program provides an easy way for users to load the HDMI input onto the interface.
+#
+#
+
+
+# Start VLC dummy targeted at stream.
+vlc --intf dummy rtsp://169.254.69.119/z3-1.mp4 &
+
+exit 0
