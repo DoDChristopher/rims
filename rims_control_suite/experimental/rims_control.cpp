@@ -16,7 +16,7 @@ int main()
     
     while(true) 
     {
-        fstream key_1_str ("/home/chris/Desktop/rims_control_suite/bin/prog_check.txt", mode) ;
+        fstream key_1_str ("guardian_state.txt", mode) ;
         key_1_str >> prog_check ;
 
         if ( prog_check == "1" )
@@ -77,6 +77,7 @@ int main()
             }
 
         }
+        cout << "off" ;
 
         sleep(1) ;
 

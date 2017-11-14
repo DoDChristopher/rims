@@ -1,0 +1,15 @@
+#!/bin/bash
+
+record_name=$(zenity --entry --width=250 --title="Save" \
+    --text="Save File As:" )
+    
+    if [ $? = 0 ]
+    then
+    fps_config=$(</home/usc/bin/education_suite/config/fps_config)
+    echo $record_name > /home/usc/bin/education_suite/config/record_name
+    recordmydesktop -o /media/usc/case_files_00103/$record_name --fps $fps_config
+    
+    #exit 0
+    fi
+
+#exit 0

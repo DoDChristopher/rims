@@ -1,0 +1,31 @@
+#!/bin/bash
+
+choice1=""
+
+choice1=$(zenity --list --title="System Options" --column="" --column=Speed --radiolist \
+  FALSE "Turn off program guardian." \
+  FALSE "Turn on program guardian." \
+  FALSE "Restart in update mode." )
+  if [ $? = 1 ]
+    then
+     exit 0
+    fi
+
+  if [ "$choice1" = "Turn off program guardian." ]
+  then
+    echo 0 > guardian_state.txt
+  fi    
+
+  if [ "$choice1" = "Turn on program guardian." ]
+  then
+    echo 1 > guardian_state.txt
+  fi  
+
+  if [ "$choice1" = "Restart in update mode." ]
+  then
+    echo 1 > update_mode.txt
+  fi  
+
+
+
+  exit 0

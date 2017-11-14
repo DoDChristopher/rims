@@ -1,0 +1,44 @@
+#!/bin/bash
+
+
+
+play_case () {
+
+play_prompt=$(</home/usc/bin/education_suite/config/play_prompt)
+
+if [ $play_prompt = 0 ]
+then
+filename=$(</home/usc/bin/education_suite/output.txt)
+  vlc --play-and-exit $filename
+
+fi
+
+if [ $play_prompt = 1 ]
+then
+  play_speed=$(zenity --list --title="Play Speed" --column="" --column=Speed --radiolist \
+  FALSE "25" \
+  FALSE "50" \
+  FALSE "75" \
+  FALSE "100" )
+  if [ $? = 1 ]
+    then
+     exit 0
+    fi
+
+
+  play_spd=$(echo "scale=2 ; $play_speed / $divider_100" | bc)
+  filename=$(</home/usc/bin/education_suite/output.txt)
+  vlc --play-and-exit --rate=$play_spd $filename
+
+fi
+  
+}
+
+wmctrl -o 0,0
+zenity --file-selection --filename=/media/usc/case_files_00103/ --title="Select a File"   > /home/usc/bin/education_suite/output.txt 
+    if [ $? = 1 ]
+    then
+     exit 0
+    fi
+   
+    play_case 
