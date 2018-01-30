@@ -1,0 +1,31 @@
+#!/bin/bash
+
+
+
+zenity --question --text="Are you sure you wish to Shut Down?"
+if [ $? = 1 ]
+then
+    echo "1" > main_intended_power_state.txt
+    exit 0
+fi
+
+customer_feedback=$(zenity --entry --title="User Feedback" \
+--text="Please tell us any comments, questions, or concerns you have about RIMS." \
+--entry-text "Type Here" --cancel-label="No Thanks")
+if [ $? = 1 ]
+then
+    $PWD/system_shutdown
+    exit 0 # Only here to clean up dry runs.
+fi
+    
+if [ $? = 0 ]
+then
+    echo "sending feedback..."
+    echo $customer_feedback > feedback_output.txt
+    scp $PWD/feedback_output.txt fbcs@172.16.255.205:/home/fbcs/bin/feedback_live
+    $PWD/system_shutdown
+
+fi
+
+
+exit 0

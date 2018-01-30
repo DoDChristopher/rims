@@ -1,0 +1,16 @@
+#!/bin/bash
+
+vmrun suspend /home/rims/vmware/android1.vmx # suspend android1
+vmrun suspend /home/rims/vmware/android2.vmx # suspend android2
+
+vmrun stop /home/rims/vmware/window2/window2.vmx # shutdown windows aircast vm1
+vmrun stop /home/rims/vmware/window3/window3.vmx # shutdown windows aircast vm2
+vmrun stop /home/rims/vmware/CardioPerfect/CardioPerfect.vmx # shutdown cardioperfect workstation
+
+sleep 10
+
+#shutdown now
+
+exit 0
+
+# Need to check if vmrun is done before or after virtual machine is off to determine timing, etc.

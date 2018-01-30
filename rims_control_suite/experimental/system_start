@@ -14,16 +14,16 @@ then
     then
         (
         echo "#Running Makefile 1" ; sleep 2
-        make -f make_update/makefile1 
+        make -f make_update/makefile1 >&log_output/log1
         echo "25"
         echo "#Running Makefile 2" ; sleep 2
-        make -f make_update/makefile2 
+        make -f make_update/makefile2 >&log_output/log2
         echo "50"
         echo "#Running Makefile 3" ; sleep 2
-        make -f make_update/makefile3 
+        make -f make_update/makefile3 >&log_output/log3
         echo "75"
         echo "#Running Makefile 4" ; sleep 2
-        make -f make_update/makefile4 ) | zenity --progress \
+        make -f make_update/makefile4 >&log_output/log4) | zenity --progress \
         --title="Updating" \
         --text="First Task." \
         --percentage=0 \
@@ -36,7 +36,7 @@ then
 
     if [ -e bash_update/bash1 ]
     then
-        notify-send -u critical "System Update" "System in update mode. Do not unplug or restart."
+        notify-send -u critical "System Update" "System is verifying Changes."
         ( echo "#Running Bash 1" ; sleep 2
         bash_update/bash1
         echo "25"
@@ -57,7 +57,7 @@ then
     fi
 
     sleep 10
-    notify-send -u critical "System Update" "System is verifying Changes."
+    notify-send -u critical "System Update" "System will Shut Down."
     ( echo "#Verifying Make." ; sleep 1
         echo "25"
         echo "#Verifying Bash." ; sleep 1
@@ -71,15 +71,27 @@ then
         --percentage=0 \
         --auto-close \
         --auto-kill
+        rm make_update/makefile1
+        rm make_update/makefile2
+        rm make_update/makefile3
+        rm make_update/makefile4
+
+        rm bash_update/bash1
+        rm bash_update/bash2
+        rm bash_update/bash3
+        rm bash_update/bash4
 
         gsettings set org.gnome.desktop.background picture-uri file:///home/chris/Pictures/its_Deep_space_communication-1.png
+        sleep 5
+        reboot
 
 fi
 
 if [ $update_mode == 0 ]
 then
 
-    stscr
-    program_guardian
+    stscr &
+    program_guardian &
+    window_manager
 
 fi

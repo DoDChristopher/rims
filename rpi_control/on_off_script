@@ -1,0 +1,82 @@
+#!/bin/bash
+
+# Exports pins to userspace
+echo "17" > /sys/class/gpio/export #in - system power signal
+echo "18" > /sys/class/gpio/export #out - system power state illumination
+echo "22" > /sys/class/gpio/export #in - mobo Pw_S good signal
+echo "23" > /sys/class/gpio/export #out - mobo soft power
+echo "24" > /sys/class/gpio/export #out - mobo hard reset
+echo "27" > /sys/class/gpio/export #out - control hard reset
+
+# Sets output pins
+echo "out" > /sys/class/gpio/gpio18/direction
+echo "out" > /sys/class/gpio/gpio23/direction
+echo "out" > /sys/class/gpio/gpio24/direction
+echo "out" > /sys/class/gpio/gpio27/direction
+
+
+# Set input pin.
+echo "in" > /sys/class/gpio/gpio17/direction
+echo "in" > /sys/class/gpio/gpio22/direction
+
+
+
+while
+do
+
+main_on=(<"cat /sys/class/gpio/gpio22/value") # Set variable to mobo power state.
+
+main_on_int=(<"main_intended_power_state.txt") # Set variable to intended power state.
+
+main_on_var=(<"main_power_state.txt")
+
+
+# If the main power button is pressed.
+if [ cat /sys/class/gpio/gpio17/value ]
+
+    #Cycle the intended power state.
+    if [ main_on_int == 0 ]
+
+        echo "1" > main_intended_power_state.txt
+
+    fi
+
+    if [ main_on_int == 1 ]
+
+        echo "0" > main_intended_power_state.txt
+
+    fi
+    sleep 2
+
+fi
+    
+main_on_int=(<"main_intended_power_state.txt")
+    
+    
+    # Turn things on to match intended power state.
+    if [ main_on_int == 1 ]
+        if [ main_on == 0 ]
+        echo "1" > /sys/class/gpio/gpio23/value # pin high
+        sleep 1
+        echo "0" > /sys/class/gpio/gpio23/value # pin low
+        fi
+    fi
+
+
+
+    # Turn things off to match intended power state.
+    if [ main_on_int == 0 ]
+        if [ main_on == 1 ]
+
+        ssh rims@172.16.1.1 Shutdown # Call for shut down prompt.
+
+        fi
+    fi
+
+
+
+
+
+
+
+done

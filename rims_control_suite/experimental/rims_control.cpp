@@ -16,8 +16,19 @@ int main()
     
     while(true) 
     {
-        fstream key_1_str ("guardian_state.txt", mode) ;
-        key_1_str >> prog_check ;
+        fstream guar_state ("guardian_state.txt", mode) ;
+        fstream make_exist ("make_update/makefile1", mode) ;
+        fstream update_mode ("rims_config/update_mode.txt", mode) ;
+
+        guar_state >> prog_check ;
+        
+
+        if ( make_exist )
+        {
+            cout << endl << "Make found" << endl ;
+            update_mode << "1" ;
+            system("reboot") ;
+        }
 
         if ( prog_check == "1" )
         {
@@ -77,7 +88,10 @@ int main()
             }
 
         }
-        cout << "off" ;
+        else
+        {
+        cout << "off" << endl ;
+        }
 
         sleep(1) ;
 
